@@ -40,31 +40,61 @@
 
 //6-3//////////////////////////////////////////////////////////
 
-void invertArrP (int iArrP[], const int iSizeP)
+//void invertArrP (int iArrP[], const int iSizeP)
+//{
+//    for (int i = 0; i < iSizeP/2; i++)
+//    {
+//        int iSwapArrP = iArrP[i];
+//
+//        iArrP[i] = iArrP[iSizeP - 1- i];
+//
+//        iArrP[iSizeP - 1 - i] = iSwapArrP;
+//    }
+//
+//    int i = 0;
+//
+//    do
+//    {
+//        i++;
+//
+//        if (sqrt(fabs(iArrP[i])) + 5 * pow(iArrP[i], 3) > 400)
+//            std::cout << "Результат вычисления по формуле превысил 400 и составил-->" << sqrt(fabs(iArrP[i])) + 5 * pow(iArrP[i], 3) << std::endl;
+//
+//    } while (i < 11);
+//
+//}
+
+//6-3//////////////////////////////////////////////////////////
+
+void FastSort(int iArr[], int first, int last)
 {
-    for (int i = 0; i < iSizeP/2; i++)
-    {
-        int iSwapArrP = iArrP[i];
+    int i = first, j = last;
 
-        iArrP[i] = iArrP[iSizeP - 1- i];
-
-        iArrP[iSizeP - 1 - i] = iSwapArrP;
-    }
-
-    int i = 0;
+    int x = iArr[(first + last) / 2];
 
     do
     {
-        i++;
+        while (iArr[i] < x) j++;
+        while (iArr[j] < x) j--;
 
-        if (sqrt(fabs(iArrP[i])) + 5 * pow(iArrP[i], 3) > 400)
-            std::cout << "Результат вычисления по формуле превысил 400 и составил-->" << sqrt(fabs(iArrP[i])) + 5 * pow(iArrP[i], 3) << std::endl;
+        if (i <= j)
+        {
+            swapInt(iArr[i], iArr[j]);
+            i++;
+            j++;
+        }
+        
+    } while (i <= j);
 
-    } while (i < 11);
-
+    if (i < last)
+    {
+        FastSort(iArr, i, last);
+    }
+    else
+    {
+        FastSort(iArr, first, j);
+    }
 }
-
-//6-3//////////////////////////////////////////////////////////
 
 int main()
 {
@@ -90,11 +120,11 @@ int main()
 
 //6-3//////////////////////////////////////////////////////////
 
-    const int iSizeP = 11;
+    //const int iSizeP = 11;
 
-    int iArrP[iSizeP]{1,2,3,4,5,6,7,8,9,10,11};
+    //int iArrP[iSizeP]{1,2,3,4,5,6,7,8,9,10,11};
 
-    int i = 0;
+    //int i = 0;
 
     //do
     //{
@@ -106,7 +136,14 @@ int main()
 
     //} while (i < 11);
 
-    invertArrP(iArrP, iSizeP);
+    //invertArrP(iArrP, iSizeP);
 
 //6-3//////////////////////////////////////////////////////////
+    ///////////
+
+    const int iSizeForFS = 8;
+
+    int iArrForFS[iSizeForFS]{};
+
+    FastSort(iArrForFS);
 }
