@@ -2,16 +2,16 @@
 
 //6-1//////////////////////////////////////////////////////////
 
-//void PrintArrMatrix(int iArr[], const int iSize)
-//{
-//    for (int i = 0; i < iSize; i++)
-//    {
-//        if (i % 3 == 0)
-//            std::cout << std::endl;
-//
-//        std::cout << iArr[i] << "\t";
-//    }
-//}
+void PrintArrMatrix(int iArr[], const int iSize)
+{
+    for (int i = 0; i < iSize; i++)
+    {
+        if (i % 3 == 0 && i != 1)
+            std::cout << std::endl;
+
+        std::cout << iArr[i] << "\t";
+    }
+}
 //
 //void SortArr(int iArr[], const int iSize)
 //{
@@ -66,33 +66,38 @@
 
 //6-3//////////////////////////////////////////////////////////
 
-void FastSort(int iArr[], int first, int last)
+void FastSort(int *iArr, int first, int last)
 {
-    int i = first, j = last;
+    int i = first, l = last, iSwith;
 
-    int x = iArr[(first + last) / 2];
+    int mid = iArr[(i + l) / 2];
 
     do
     {
-        while (iArr[i] < x) j++;
-        while (iArr[j] < x) j--;
+        while (iArr[i] < mid) i++;
+        while (iArr[l] < mid) l--;
 
-        if (i <= j)
+        if (i <= l)
         {
-            swapInt(iArr[i], iArr[j]);
+            iSwith = iArr[i];
+
+            iArr[i] = iArr[l];
+
+            iArr[l] = iSwith;
+
             i++;
-            j++;
+            l--;
         }
         
-    } while (i <= j);
+    } while (i < l);
 
-    if (i < last)
+    if (first < l)
+    {
+        FastSort(iArr, first, l);
+    }
+    else if (i < last)
     {
         FastSort(iArr, i, last);
-    }
-    else
-    {
-        FastSort(iArr, first, j);
     }
 }
 
@@ -141,9 +146,17 @@ int main()
 //6-3//////////////////////////////////////////////////////////
     ///////////
 
-    const int iSizeForFS = 8;
+    const int iSizeForFS = 9;
 
-    int iArrForFS[iSizeForFS]{};
+    int iArrForFS[iSizeForFS]{ 9, 8, 7, 6, 5, 4, 3, 2, 1 };
 
-    FastSort(iArrForFS);
+    PrintArrMatrix(iArrForFS, iSizeForFS);
+
+    FastSort(iArrForFS,0,8);
+
+    std::cout << std::endl;
+
+    PrintArrMatrix(iArrForFS, iSizeForFS);
+
+    return 0;
 }
