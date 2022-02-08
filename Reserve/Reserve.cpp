@@ -12,94 +12,112 @@ void PrintArrMatrix(int iArr[], const int iSize)
         std::cout << iArr[i] << "\t";
     }
 }
-//
-//void SortArr(int iArr[], const int iSize)
-//{
-//    int iSwapped = 0;
-//
-//    for (int i = 0; i < iSize - 1; i++)
-//    {
-//        if (iArr[i] > iArr[i+1])
-//        {
-//            int iSwapI = iArr[i + 1];
-//
-//            iArr[i + 1] = iArr[i];
-//
-//            iArr[i] = iSwapI;
-//
-//            iSwapped++;
-//        }
-//    }
-//    if (iSwapped > 0)
-//        SortArr(iArr, iSize);
-//    else
-//        return;
-//}
+
+void SortArr(int iArr[], const int iSize)
+{
+    int iSwapped = 0;
+
+    for (int i = 0; i < iSize - 1; i++)
+    {
+        if (iArr[i] > iArr[i+1])
+        {
+            int iSwapI = iArr[i + 1];
+
+            iArr[i + 1] = iArr[i];
+
+            iArr[i] = iSwapI;
+
+            iSwapped++;
+        }
+    }
+    if (iSwapped > 0)
+        SortArr(iArr, iSize);
+    else
+        return;
+}
 
 //6-1//////////////////////////////////////////////////////////
 
 //6-3//////////////////////////////////////////////////////////
 
-//void invertArrP (int iArrP[], const int iSizeP)
-//{
-//    for (int i = 0; i < iSizeP/2; i++)
-//    {
-//        int iSwapArrP = iArrP[i];
-//
-//        iArrP[i] = iArrP[iSizeP - 1- i];
-//
-//        iArrP[iSizeP - 1 - i] = iSwapArrP;
-//    }
-//
-//    int i = 0;
-//
-//    do
-//    {
-//        i++;
-//
-//        if (sqrt(fabs(iArrP[i])) + 5 * pow(iArrP[i], 3) > 400)
-//            std::cout << "Результат вычисления по формуле превысил 400 и составил-->" << sqrt(fabs(iArrP[i])) + 5 * pow(iArrP[i], 3) << std::endl;
-//
-//    } while (i < 11);
-//
-//}
-
-//6-3//////////////////////////////////////////////////////////
-
-void FastSort(int *iArr, int first, int last)
+void invertArrP (int iArrP[], const int iSizeP)
 {
-    int i = first, l = last, iSwith;
+    for (int i = 0; i < iSizeP/2; i++)
+    {
+        int iSwapArrP = iArrP[i];
 
-    int mid = iArr[(i + l) / 2];
+        iArrP[i] = iArrP[iSizeP - 1- i];
+
+        iArrP[iSizeP - 1 - i] = iSwapArrP;
+    }
+
+    int i = 0;
 
     do
     {
-        while (iArr[i] < mid) i++;
-        while (iArr[l] < mid) l--;
+        i++;
 
-        if (i <= l)
+        if (sqrt(fabs(iArrP[i])) + 5 * pow(iArrP[i], 3) > 400)
+            std::cout << "Результат вычисления по формуле превысил 400 и составил-->" << sqrt(fabs(iArrP[i])) + 5 * pow(iArrP[i], 3) << std::endl;
+
+    } while (i < 11);
+
+}
+
+//6-3//////////////////////////////////////////////////////////
+
+//7-1//////////////////////////////////////////////////////////
+
+void FastSort(int* mas, int first, int last)
+{
+    int mid, count;
+
+    int f = first, l = last;
+
+    mid = mas[(f + l) / 2];
+
+    do
+    {
+        while (mas[f] < mid) f++;
+
+        while (mas[l] > mid) l--;
+
+        if (f <= l)
         {
-            iSwith = iArr[i];
+            count = mas[f];
 
-            iArr[i] = iArr[l];
+            mas[f] = mas[l];
 
-            iArr[l] = iSwith;
+            mas[l] = count;
 
-            i++;
+            f++;
+
             l--;
         }
-        
-    } while (i < l);
+    } while (f < l);
 
-    if (first < l)
+    if (first < l) FastSort(mas, first, l);
+
+    if (f < last) FastSort(mas, f, last);
+}
+
+void InsertSort(int *iArr, int iSize)
+{
+    int tmp;
+
+    for (int i = 1, j; i < iSize; ++i)
     {
-        FastSort(iArr, first, l);
-    }
-    else if (i < last)
-    {
-        FastSort(iArr, i, last);
+        tmp = iArr[i];
+
+        for (j = i - 1; j >= 0 && iArr[j] > tmp; --j)
+            iArr[j + 1] = iArr[j];
+
+        iArr[j + 1] = tmp;
+
     }
 }
+
+//7-1//////////////////////////////////////////////////////////
 
 int main()
 {
@@ -107,56 +125,67 @@ int main()
 
 //6-1//////////////////////////////////////////////////////////
     
-    //std::cout << "Было до сортировки:";
+    std::cout << "Было до сортировки:";
 
-    //const int iSize = 9;
+    const int iSize = 9;
 
-    //int iArr[iSize]{ 1, 9, 2, 5, 7, 6, 4, 3, 8 };
+    int iArr[iSize]{ 1, 9, 2, 5, 7, 6, 4, 3, 8 };
 
-    //PrintArrMatrix(iArr, iSize);
+    PrintArrMatrix(iArr, iSize);
 
-    //SortArr(iArr, iSize);
+    SortArr(iArr, iSize);
 
-    //std::cout << std::endl << "Стало после сортировки:";
+    std::cout << std::endl << "Стало после сортировки:";
 
-    //PrintArrMatrix(iArr, iSize);
+    PrintArrMatrix(iArr, iSize);
     
 //6-1//////////////////////////////////////////////////////////
+    std::cout << std::endl;
+//6-3//////////////////////////////////////////////////////////
+
+    const int iSizeP = 11;
+
+    int iArrP[iSizeP]{1,2,3,4,5,6,7,8,9,10,11};
+
+    int i = 0;
+
+    do
+    {
+        //std::cout << "Введите " << i + 1 << " число из 11" << std::endl;
+
+        //std::cin >> iArrP[i];
+
+        i++;
+
+    } while (i < 11);
+
+    invertArrP(iArrP, iSizeP);
 
 //6-3//////////////////////////////////////////////////////////
 
-    //const int iSizeP = 11;
-
-    //int iArrP[iSizeP]{1,2,3,4,5,6,7,8,9,10,11};
-
-    //int i = 0;
-
-    //do
-    //{
-    //    //std::cout << "Введите " << i + 1 << " число из 11" << std::endl;
-
-    //    //std::cin >> iArrP[i];
-
-    //    i++;
-
-    //} while (i < 11);
-
-    //invertArrP(iArrP, iSizeP);
-
-//6-3//////////////////////////////////////////////////////////
-    ///////////
+//7-1//////////////////////////////////////////////////////////
 
     const int iSizeForFS = 9;
 
     int iArrForFS[iSizeForFS]{ 9, 8, 7, 6, 5, 4, 3, 2, 1 };
 
-    PrintArrMatrix(iArrForFS, iSizeForFS);
-
-    FastSort(iArrForFS,0,8);
-
-    std::cout << std::endl;
+    std::cout << "Было до сортировки:";
 
     PrintArrMatrix(iArrForFS, iSizeForFS);
+
+    if (iSizeForFS <= 10)
+    {
+        InsertSort(iArrForFS, iSizeForFS);
+    }
+    else
+    {
+        FastSort(iArrForFS, 0, 8);
+    }
+    std::cout << std::endl << "Стало после сортировки:";
+
+    PrintArrMatrix(iArrForFS, iSizeForFS);
+
+//7-1//////////////////////////////////////////////////////////
 
     return 0;
 }
