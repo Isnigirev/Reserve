@@ -17,23 +17,24 @@ void SortArr(int iArr[], const int iSize)
 {
     int iSwapped = 0;
 
-    for (int i = 0; i < iSize - 1; i++)
+    for (int i = 0; i < iSize; i++)
     {
-        if (iArr[i] > iArr[i+1])
+        for (int i1 = 0; i1 < iSize - 1; i1++)
         {
-            int iSwapI = iArr[i + 1];
+             if (iArr[i1] > iArr[i1 +1])
+             {
+                 int iSwapI = iArr[i1 + 1];
 
-            iArr[i + 1] = iArr[i];
+                 iArr[i1 + 1] = iArr[i1];
 
-            iArr[i] = iSwapI;
+                 iArr[i1] = iSwapI;
 
-            iSwapped++;
+             iSwapped++;
+             }
         }
+       
     }
-    if (iSwapped > 0)
-        SortArr(iArr, iSize);
-    else
-        return;
+
 }
 
 //6-1//////////////////////////////////////////////////////////
