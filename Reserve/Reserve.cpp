@@ -15,7 +15,6 @@ void PrintArrMatrix(int iArr[], const int iSize)
 
 void SortArr(int iArr[], const int iSize)
 {
-    int iSwapped = 0;
 
     for (int i = 0; i < iSize; i++)
     {
@@ -29,7 +28,6 @@ void SortArr(int iArr[], const int iSize)
 
                  iArr[i1] = iSwapI;
 
-             iSwapped++;
              }
         }
        
