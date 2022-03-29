@@ -19,15 +19,33 @@ public:
     }
 };
 
-class Student
+class Student public: Person
 {
     unsigned int iYearOfStudy;
+
+public:
+    void CinYearOfStudy(unsigned int iYearOfStudy)
+    {
+        this->iYearOfStudy = iYearOfStudy;
+    }
+
+    void ResYearOfStudy(unsigned int iYearOfStudy)
+    {
+        this->iYearOfStudy = iYearOfStudy;
+    }
 };
 
 
 int main()
 {
     setlocale(LC_ALL, "Ru");
+
+    int iCounter;
+
+    Student one;
+    one.CinYearOfStudy(2);
+    one
+
 
 
     return 0;
