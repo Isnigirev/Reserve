@@ -10,6 +10,18 @@ class Person
     char cHumanGender;
     float fWeight;
 
+public:
+    void CinNameAgeWeight(string stName, unsigned int iAge, float fWeight)
+    {
+        this->stName = stName;
+        this->iAge = iAge;
+        this->fWeight = fWeight;
+    }
+};
+
+class Student
+{
+    unsigned int iYearOfStudy;
 };
 
 
