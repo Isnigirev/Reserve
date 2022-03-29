@@ -19,7 +19,7 @@ public:
     }
 };
 
-class Student public: Person
+class Student: public Person
 {
     unsigned int iYearOfStudy;
 
@@ -28,24 +28,32 @@ public:
     {
         this->iYearOfStudy = iYearOfStudy;
     }
-
-    void ResYearOfStudy(unsigned int iYearOfStudy)
-    {
-        this->iYearOfStudy = iYearOfStudy;
-    }
 };
 
+class Fruit
+{
+public:
+    std::string stName;
+    std::string stColor;
+};
+
+class Apple : public Fruit {};
+
+class Banana : public Fruit {};
+
+class GrannySmith : public Apple {};
 
 int main()
 {
     setlocale(LC_ALL, "Ru");
 
     int iCounter;
-
+    
     Student one;
-    one.CinYearOfStudy(2);
-    one
-
+    one.CinYearOfStudy (2);
+    one.CinNameAgeWeight ("Oleg", 19, 65.2);
+    one.CinNameAgeWeight ("Alina", 19, 43);
+    one.CinNameAgeWeight ("Ivan", 19, 70);
 
 
     return 0;
