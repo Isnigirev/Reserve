@@ -100,9 +100,9 @@ int main()
     Apple a;
     a.Template("Apple", "red");
     Banana b;
-    b.Template("Banana", "Yello");
+    b.Template("Banana", "Yellow");
     GrannySmith c;
-    c.Template("GrannySmith", "green");
+    c.Template("Granny Smith apple", "green");
 
     cout << "My " << a.getName() << " is " << a.getColor() << ".\n";
     cout << "My " << b.getName() << " is " << b.getColor() << ".\n";
