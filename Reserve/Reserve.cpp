@@ -47,7 +47,7 @@ class Fruit
     std::string stColor;
 
 public:
-    void Template (std::string stName, std::string stColor)
+    Fruit (std::string stName, std::string stColor)
     {
         this->stName = stName;
         this->stColor = stColor;
@@ -64,11 +64,23 @@ public:
     }
 };
 
-class Apple : public Fruit {};
+class Apple : public Fruit 
+{
+public:
+    Apple (std::string stName, std::string stColor) : Fruit (stName, stColor) {};
+};
 
-class Banana : public Fruit {};
+class Banana : public Fruit 
+{
+public:
+    Banana(std::string stName, std::string stColor) : Fruit(stName, stColor) {};
+};
 
-class GrannySmith : public Apple {};
+class GrannySmith : public Apple 
+{
+public:
+    GrannySmith(std::string stName, std::string stColor) : Apple(stName, stColor) {};
+};
 
 int main()
 {
@@ -97,12 +109,9 @@ int main()
 
     //2.
 
-    Apple a;
-    a.Template("Apple", "red");
-    Banana b;
-    b.Template("Banana", "yellow");
-    GrannySmith c;
-    c.Template("Granny Smith apple", "green");
+    Apple a ("Apple","red");
+    Banana b ("Banana", "yellow");
+    GrannySmith c ("Granny Smith apple", "green");
 
     cout << "My " << a.getName() << " is " << a.getColor() << ".\n";
     cout << "My " << b.getName() << " is " << b.getColor() << ".\n";
