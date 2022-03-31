@@ -41,33 +41,42 @@ public:
     }
 };
 
-//
-//class Fruit
-//{
-//    std::string stName;
-//    std::string stColor;
-//
-//public:
-//    void getName(std::string stName)
-//    {
-//        this->stName = stName;
-//    }
-//
-//    void getColor(std::string stColor)
-//    {
-//        this->getColor = stColor;
-//    }
-//};
-//
-//class Apple : public Fruit {};
-//
-//class Banana : public Fruit {};
-//
-//class GrannySmith : public Apple {};
+
+class Fruit
+{
+    std::string stName;
+    std::string stColor;
+
+public:
+    void getName()
+    {
+        this->stName;
+    }
+    
+    void getColor()
+    {
+        this->stColor;
+    }
+};
+
+class Apple : public Fruit 
+{
+    Apple(std::string stName, std::string stColor)
+    {
+        Fruit::stName = stName;
+        stColor = stColor;
+    }
+};
+
+class Banana : public Fruit {};
+
+class GrannySmith : public Apple {};
 
 int main()
 {
     setlocale(LC_ALL, "Ru");
+
+    //1.
 
     int iCounter = 0;
     
@@ -88,15 +97,15 @@ int main()
     Alina.PrintInfo();
     Ivan.PrintInfo();
 
+    //2.
 
+    Apple a("Apple", "red");
+    //Banana b();
+    //GrannySmith c();
 
-   // Apple a("red");
-    //Banana b("yellow");
-   // GrannySmith c("green");
-
-   // cout << "My " << a.getName() << " is " << a.getColor() << ".\n";
-   // cout << "My " << b.getName() << " is " << b.getColor() << ".\n";
-   // cout << "My " << c.getName() << " is " << c.getColor() << ".\n";
+    cout << "My " << a.getName() << " is " << a.getColor() << ".\n";
+    //cout << "My " << b.getName() << " is " << b.getColor() << ".\n";
+    //cout << "My " << c.getName() << " is " << c.getColor() << ".\n";
 
     return 0;
 }
