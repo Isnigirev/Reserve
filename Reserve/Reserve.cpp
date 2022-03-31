@@ -51,7 +51,7 @@ public:
     Fruit(std::string stName, std::string st Color) 
     {
     this->stName = stName;
-    this->st Color = stColor;
+    this->stColor = stColor;
     } 
 
     void getName()
