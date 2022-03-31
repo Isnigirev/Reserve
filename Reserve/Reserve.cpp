@@ -11,8 +11,7 @@ class Person
     float fWeight;
 
 public:
-    void CinNameAgeWeightGender (string stName, unsigned int iAge, 
-                                float fWeight,char cGender ,int &iCounter)
+    Person (string stName, unsigned int iAge, float fWeight,char cGender ,int &iCounter)
     {
         this->stName = stName;
         this->iAge = iAge;
@@ -39,6 +38,10 @@ public:
     {
         this->iYearOfStudy = iYearOfStudy;
     }
+
+    Student (string stName, unsigned int iAge,
+        float fWeight, char cGender, int &iCounter) : Person (stName, iAge,
+            fWeight, cGender, iCounter) {};
 };
 
 class Fruit
@@ -90,17 +93,14 @@ int main()
 
     int iCounter = 0;
     
-    Student Oleg;
+    Student Oleg("Oleg", 19, 65.2, 'M', iCounter);
     Oleg.CinYearOfStudy (2);
-    Oleg.CinNameAgeWeightGender ("Oleg", 19, 65.2,'M', iCounter);
 
-    Student Alina;
+    Student Alina("Alina", 19, 43, 'W', iCounter);
     Alina.CinYearOfStudy(2);
-    Alina.CinNameAgeWeightGender ("Alina", 19, 43,'W', iCounter);
-
-    Student Ivan;
+    
+    Student Ivan("Ivan", 19, 70, 'M', iCounter);
     Ivan.CinYearOfStudy(2);
-    Ivan.CinNameAgeWeightGender ("Ivan", 19, 70,'M', iCounter);
 
     cout << "Общее кол-во студентов: " << iCounter << endl;
     Oleg.PrintInfo();
@@ -108,6 +108,8 @@ int main()
     Ivan.PrintInfo();
 
     //2.
+
+    cout << "\n";
 
     Apple a ("Apple","red");
     Banana b ("Banana", "yellow");
