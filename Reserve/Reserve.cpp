@@ -32,9 +32,19 @@ public:
 
 class Fruit
 {
-public:
     std::string stName;
     std::string stColor;
+
+public:
+    void getName(std::string stName)
+    {
+        this->stName = stName;
+    }
+
+    void getColor(std::string stColor)
+    {
+        this->getColor = stColor;
+    }
 };
 
 class Apple : public Fruit {};
@@ -55,6 +65,14 @@ int main()
     one.CinNameAgeWeight ("Alina", 19, 43);
     one.CinNameAgeWeight ("Ivan", 19, 70);
 
+
+    Apple a("red");
+    Banana b("yellow");
+    GrannySmith c("green");
+
+    cout << "My " << a.getName() << " is " << a.getColor() << ".\n";
+    cout << "My " << b.stName() << " is " << b.stColor() << ".\n";
+    cout << "My " << c.stName() << " is " << c.stColor() << ".\n";
 
     return 0;
 }
