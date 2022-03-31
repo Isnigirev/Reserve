@@ -47,7 +47,7 @@ class Fruit
     std::string stColor;
 
 public:
-    void Template (std::string stName, std::string stColor) 
+    void Template (std::string stName, std::string stColor)
     {
         this->stName = stName;
         this->stColor = stColor;
@@ -100,7 +100,7 @@ int main()
     Apple a;
     a.Template("Apple", "red");
     Banana b;
-    b.Template("Banana", "Yellow");
+    b.Template("Banana", "yellow");
     GrannySmith c;
     c.Template("Granny Smith apple", "green");
 
