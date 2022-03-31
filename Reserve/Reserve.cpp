@@ -7,19 +7,30 @@ class Person
 {
     string stName;
     unsigned int iAge;
-    char cHumanGender;
+    char cGender;
     float fWeight;
 
 public:
-    void CinNameAgeWeight(string stName, unsigned int iAge, float fWeight)
+    void CinNameAgeWeightGender (string stName, unsigned int iAge, 
+                                float fWeight,char cGender ,int &iCounter)
     {
         this->stName = stName;
         this->iAge = iAge;
         this->fWeight = fWeight;
+        this->cGender = cGender;
+        iCounter++;
+    }
+
+    void PrintInfo()
+    {
+        cout << "Name: " << this->stName;
+        cout << "\nIs Age: " << this->iAge;
+        cout << "\nIs Weight: " << this->fWeight;
+        cout << "\nIs Gender: " << this->cGender << "\n";
     }
 };
 
-class Student: public Person
+class Student : public Person
 {
     unsigned int iYearOfStudy;
 
@@ -30,49 +41,62 @@ public:
     }
 };
 
-class Fruit
-{
-    std::string stName;
-    std::string stColor;
-
-public:
-    void getName(std::string stName)
-    {
-        this->stName = stName;
-    }
-
-    void getColor(std::string stColor)
-    {
-        this->getColor = stColor;
-    }
-};
-
-class Apple : public Fruit {};
-
-class Banana : public Fruit {};
-
-class GrannySmith : public Apple {};
+//
+//class Fruit
+//{
+//    std::string stName;
+//    std::string stColor;
+//
+//public:
+//    void getName(std::string stName)
+//    {
+//        this->stName = stName;
+//    }
+//
+//    void getColor(std::string stColor)
+//    {
+//        this->getColor = stColor;
+//    }
+//};
+//
+//class Apple : public Fruit {};
+//
+//class Banana : public Fruit {};
+//
+//class GrannySmith : public Apple {};
 
 int main()
 {
     setlocale(LC_ALL, "Ru");
 
-    int iCounter;
+    int iCounter = 0;
     
-    Student one;
-    one.CinYearOfStudy (2);
-    one.CinNameAgeWeight ("Oleg", 19, 65.2);
-    one.CinNameAgeWeight ("Alina", 19, 43);
-    one.CinNameAgeWeight ("Ivan", 19, 70);
+    Student Oleg;
+    Oleg.CinYearOfStudy (2);
+    Oleg.CinNameAgeWeightGender ("Oleg", 19, 65.2,'M', iCounter);
+
+    Student Alina;
+    Alina.CinYearOfStudy(2);
+    Alina.CinNameAgeWeightGender ("Alina", 19, 43,'W', iCounter);
+
+    Student Ivan;
+    Ivan.CinYearOfStudy(2);
+    Ivan.CinNameAgeWeightGender ("Ivan", 19, 70,'M', iCounter);
+
+    cout << "Общее кол-во студентов: " << iCounter << endl;
+    Oleg.PrintInfo();
+    Alina.PrintInfo();
+    Ivan.PrintInfo();
 
 
-    Apple a("red");
-    Banana b("yellow");
-    GrannySmith c("green");
 
-    cout << "My " << a.getName() << " is " << a.getColor() << ".\n";
-    cout << "My " << b.stName() << " is " << b.stColor() << ".\n";
-    cout << "My " << c.stName() << " is " << c.stColor() << ".\n";
+   // Apple a("red");
+    //Banana b("yellow");
+   // GrannySmith c("green");
+
+   // cout << "My " << a.getName() << " is " << a.getColor() << ".\n";
+   // cout << "My " << b.getName() << " is " << b.getColor() << ".\n";
+   // cout << "My " << c.getName() << " is " << c.getColor() << ".\n";
 
     return 0;
 }
