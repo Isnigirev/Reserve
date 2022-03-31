@@ -48,6 +48,12 @@ class Fruit
     std::string stColor;
 
 public:
+    Fruit(std::string stName, std::string st Color) 
+    {
+    this->stName = stName;
+    this->st Color = stColor;
+    } 
+
     void getName()
     {
         this->stName;
