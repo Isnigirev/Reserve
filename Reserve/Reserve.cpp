@@ -121,3 +121,232 @@ int main()
 
     return 0;
 }
+
+
+
+//3
+/*
+
+#include <iostream>
+
+using namespace std;
+
+//3 Класса
+//Базовый класс Black Jeck
+//Производные классы Gamer и Croupier
+
+class BlackJeck
+{
+    char cSteck[56] {};
+    int iCursor = 0;
+    int iSummCash = 0;
+    int iSummPoint = 0;
+
+    void SummPoint()
+    {
+        if (cSteck[this->iCursor] == '1')
+        {
+            this->iSummPoint += 1;
+        }
+        else if (cSteck[this->iCursor] == '2')
+        {
+            this->iSummPoint += 2;
+        }
+        else if (cSteck[this->iCursor] == '3')
+        {
+            this->iSummPoint += 3;
+        }
+        else if (cSteck[this->iCursor] == '4')
+        {
+            this->iSummPoint += 4;
+        }
+        else if (cSteck[this->iCursor] == '5')
+        {
+            this->iSummPoint += 5;
+        }
+        else if (cSteck[this->iCursor] == '6')
+        {
+            this->iSummPoint += 6;
+        }
+        else if (cSteck[this->iCursor] == '7')
+        {
+            this->iSummPoint += 7;
+        }
+        else if (cSteck[this->iCursor] == '8')
+        {
+            this->iSummPoint += 8;
+        }
+        else if (cSteck[this->iCursor] == '9')
+        {
+            this->iSummPoint += 9;
+        }
+        else if (cSteck[this->iCursor] == '10')
+        {
+            this->iSummPoint += 10;
+        }
+        else if (cSteck[this->iCursor] == 'L'
+            || cSteck[this->iCursor] == 'V' || cSteck[this->iCursor] == 'K')
+        {
+            this->iSummPoint += 10;
+        }
+        else if (cSteck[this->iCursor] == 'A')
+        {
+            this->iSummPoint += 11;
+        }
+
+        this->iCursor++;
+
+    }
+
+public:
+    char GetCart(char cCardDeck[])
+    {
+        for (int i = 0; i < 56; i++)
+        {
+            int b = rand () % 55;
+
+            if (cCardDeck[b] != 0 && cCardDeck[b] != '0')
+            {
+                char c;
+
+                cSteck[this->iCursor] = cCardDeck[b];
+
+                c = cCardDeck[b];
+
+                SummPoint();
+
+                cCardDeck[b] = 0;
+
+                return c;
+            }
+        }
+    }
+
+    int GetSummPoint()
+    {
+        return this->iSummPoint;
+    }
+
+    int SummCash(int &iCash)
+    {
+        this->iSummCash += iCash;
+
+        return iCash = 0;
+    }
+
+    int GetCash (int iCash)
+    {
+        return iCash = this->iSummCash;
+    }
+
+    bool GetWin()
+    {
+        if (this->iSummPoint == 21)
+        {
+            std::cout << "Выйграл " << std::endl;
+            return true;
+        }
+        else if (this->iSummPoint > 21)
+        {
+            std::cout << "Проиграл " << std::endl;
+            return false;
+        }
+    }
+};
+
+class Croupier : public BlackJeck {};
+
+class Gamer : public BlackJeck
+{
+    std::string stName;
+
+public:
+    void SetName(std::string stName)
+    {
+        this->stName = stName;
+    }
+
+    std::string GetName()
+    {
+        return this->stName;
+    }
+};
+
+int main()
+{
+    setlocale(LC_ALL, "Ru");
+
+    char cCardDeck[56]{ '1','2','3','4','5','6','7','8','9','10','L','K','V','A',
+                    '1','2','3','4','5','6','7','8','9','10','L','K','V','A',
+                    '1','2','3','4','5','6','7','8','9','10','L','K','V','A',
+                    '1','2','3','4','5','6','7','8','9','10','L','K','V','A', };
+    Gamer g;
+    Croupier c;
+
+    string stName;
+    int iCash = 0;
+
+    cout << "Введите имя " << endl;
+
+    //cin >> stName;
+    g.SetName(stName);
+
+    cout << "\nВведите начальную ставку " << endl;
+
+    //cin >> iCash;
+    c.SummCash (iCash);
+
+    cout << "Вы взяти карту " << g.GetCart(cCardDeck);
+    cout << "\nВы взяти карту " << g.GetCart(cCardDeck);
+    cout << "\nСумма Ваших очков " << g.GetSummPoint();
+
+    cout << endl;
+
+    if (g.GetSummPoint() == 21)
+    {
+        cout << g.GetName() << " Выйграл";
+
+        g.GetCash(iCash);
+    }
+    else if (g.GetSummPoint() > 21)
+    {
+        cout << g.GetName() << " Проиграл";
+    }
+    else
+    {
+        int i = 0;
+
+        bool bGetWin = false;
+
+        do
+        {
+            if (i % 2 == 0)
+            {
+                cout << "\nКрупье взял карту " << c.GetCart(cCardDeck);
+
+                cout << "\nСумма очков крупье " << c.GetSummPoint();
+
+                c.GetWin();
+            }
+            else
+            {
+                cout << "\nВзять карту? (y/n) " << endl;
+                char c;
+                cin >> c;
+
+                if (c == 'y' || c == 'Y')
+                {
+                    cout << "\nВы взяти карту " << g.GetCart(cCardDeck);
+
+                    cout << "\nСумма Ваших очков " << g.GetSummPoint();
+                }
+            }
+
+            i++;
+
+        } while (c.GetWin() == true || g.GetWin() == true);
+    }
+
+    return 0;
+}
+*/
