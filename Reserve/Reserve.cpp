@@ -1,4 +1,6 @@
 ﻿#include <iostream>
+#define endll std::cout << std::endl << std::endl, std::cin.clear();
+
 
 int main()
 {
@@ -16,6 +18,10 @@ int main()
     }
 
     //2
+
+    endll;
+
+    //3
 
     return 0;
 }
