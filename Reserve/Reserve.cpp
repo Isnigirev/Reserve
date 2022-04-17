@@ -1,4 +1,5 @@
 ﻿#include <iostream>
+#include <vector>
 #define endll std::cout << std::endl << std::endl, std::cin.clear();
 
 
